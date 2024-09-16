@@ -29,17 +29,17 @@ and run: `./gen_tables.py > tables.go`
 ```go
 import "github.com/aglyzov/charmap"
 
-var koi8_r = "\xf4\xc5\xd3\xd4\xcf\xd7\xc1\xd1 \xd3\xd4\xd2\xcf\xcb\xc1"
+var koi8_r = []byte("\xf4\xc5\xd3\xd4\xcf\xd7\xc1\xd1 \xd3\xd4\xd2\xcf\xcb\xc1")
 var utf8_1 = charmap.ANY_to_UTF8(koi8_r, "KOI8-R")
 
-// utf8_1 == "Тестовая строка"
+// utf8_1 == []byte("Тестовая строка")
 
-var cp1251 = "\xd2\xe5\xf1\xf2\xee\xe2\xe0\xff \xf1\xf2\xf0\xee\xea\xe0"
+var cp1251 = []byte("\xd2\xe5\xf1\xf2\xee\xe2\xe0\xff \xf1\xf2\xf0\xee\xea\xe0")
 var utf8_2 = charmap.CP1251_to_UTF8(cp1251)
 
 // utf8_2 == utf8_1
 
-var ibm866 = "\x92\xa5\xe1\xe2\xae\xa2\xa0\xef \xe1\xe2\xe0\xae\xaa\xa0"
+var ibm866 = []byte("\x92\xa5\xe1\xe2\xae\xa2\xa0\xef \xe1\xe2\xe0\xae\xaa\xa0")
 var utf8_3 = charmap.ToUTF8(charmap.CP866_UTF8_TABLE, ibm866)
 
 // utf8_3 == utf8_2
